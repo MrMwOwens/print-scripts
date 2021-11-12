@@ -1,0 +1,21 @@
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+'' Description: Connects to printer and adds as default''
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+ON ERROR RESUME NEXT
+
+Dim objNetwork, strUNCPrinter
+
+strUNCPrinter = "PRINT SERVER ADRESS"
+
+msgBox "Adding printer " & strUNCPrinter & ". This may take a few seconds. Please hit OK and wait."
+
+Set objNetwork = CreateObject("WScript.Network") 
+objNetwork.AddWindowsPrinterConnection strUNCPrinter
+objNetwork.SetDefaultPrinter strUNCPrinter
+
+msgBox "Printer has been added as the defualt printer."
+
+WScript.Quit
+
+
